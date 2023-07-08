@@ -1,9 +1,10 @@
 from django.urls import path
-from .views import ShopView, CartView, ProductSingleView, CartViewSet
+from store.views import ShopView, CartView, ProductSingleView, CartViewSet, WishListView, WishListAddView, RemoveFromWishList, WishListViewSet
 from rest_framework import routers
 
 router = routers.DefaultRouter()
 router.register(r'cart', CartViewSet)
+router.register(r'wishlist', WishListViewSet)
 
 app_name = 'store'
 
@@ -15,3 +16,4 @@ urlpatterns = [
     path('wishlist/add/<int:id>/', WishListAddView.as_view(), name='add_to_wishlist'),
     path('wishlist/remove/<int:id>', RemoveFromWishList.as_view(), name='remove_from_wishlist'),
 ]
+
